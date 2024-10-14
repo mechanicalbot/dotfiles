@@ -1,0 +1,17 @@
+{{- $name := promptStringOnce . "name" "Enter git name" -}}
+{{- $email := promptStringOnce . "email" "Enter git email" -}}
+
+data:
+  name: {{ $name | quote }}
+  email: {{ $email | quote }}
+
+diff:
+  command: code
+  args: ["--wait", "--diff"]
+
+interpreters:
+{{- if lookPath "pwsh" -}}
+  ps1:
+    command: pwsh
+    args: ["-NoLogo"]
+{{- end -}}
