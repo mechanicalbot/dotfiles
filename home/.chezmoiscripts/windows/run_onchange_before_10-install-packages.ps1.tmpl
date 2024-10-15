@@ -1,0 +1,54 @@
+#!/bin/pwsh
+# test template via
+# cat .\home\.chezmoiscripts\windows\run_onchange_before_10-install-packages.ps1.tmpl | chezmoi execute-template
+
+Set-StrictMode -Version 3.0
+$ErrorActionPreference = "Stop"
+
+Write-Host 'Install packages...' -ForegroundColor Green
+
+# Self-elevate the script if required
+if (-Not ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdentity]::GetCurrent()).IsInRole([Security.Principal.WindowsBuiltInRole] 'Administrator')) {
+  if ([int](Get-CimInstance -Class Win32_OperatingSystem | Select-Object -ExpandProperty BuildNumber) -ge 6000) {
+    $CommandLine = "-NoExit -File `"" + $MyInvocation.MyCommand.Path + "`" " + $MyInvocation.UnboundArguments
+    Start-Process -Wait -FilePath PowerShell.exe -Verb Runas -ArgumentList $CommandLine
+    Exit
+  }
+}
+
+# pwsh api for winget
+if (-not (Get-Module -Name Microsoft.WinGet.Client)) {
+  Install-Module Microsoft.WinGet.Client
+  Import-Module Microsoft.WinGet.Client
+}
+$installedWingetPackages = Get-WinGetPackage -Source winget | ForEach-Object Id
+$installedScoopPackages = scoop list 6> $null | ForEach-Object { "$($_.Source)/$($_.Name)" }
+$packages = @(
+{{ range .packages }}
+{{ if (index . "winget") -}}
+@{winget = {{ .winget | quote }}}
+{{ end -}}
+{{ if (index . "scoop") -}}
+@{scoop = {{ .scoop | quote }}}
+{{ end -}}
+{{ end }}
+)
+
+foreach ($package in $packages) {
+  if (($package.ContainsKey("winget")) -and (-not ($installedWingetPackages.Contains($package.winget)))) {
+    Write-Host "`t[winget]: $($package.winget)" -ForegroundColor Green
+    winget install `
+      --exact --source winget --id $package.winget `
+      --accept-source-agreements `
+      --accept-package-agreements `
+      --disable-interactivity `
+      --silent --ignore-warnings --no-upgrade
+  }
+  if (($package.ContainsKey("scoop")) -and (-not ($installedScoopPackages.Contains($package.scoop)))) {
+    Write-Host "`t[scoop]: $($package.scoop)" -ForegroundColor Green
+    scoop install `
+      $package.scoop `
+      --no-update-scoop `
+      6> $null
+  }
+}

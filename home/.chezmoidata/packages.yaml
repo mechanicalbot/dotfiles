@@ -1,0 +1,74 @@
+packages:
+  - winget: Brave.Brave
+    cask: brave-browser
+  - winget: Google.Chrome
+    cask: google-chrome
+  - winget: Mozilla.Firefox
+    cask: firefox
+  - winget: Telegram.TelegramDesktop
+    cask: telegram
+  - winget: Git.Git
+    brew: git
+  - winget: Starship.Starship
+    brew: starship
+  - winget: Deezer.Deezer
+    cask: deezer
+  - winget: Notion.Notion
+    cask: notion
+  - winget: Obsidian.Obsidian
+    cask: obsidian
+  - winget: Microsoft.VisualStudioCode
+    cask: visual-studio-code
+  - winget: Microsoft.WindowsTerminal
+  - winget: 7zip.7zip
+    brew: 7zip
+  - winget: FiloSottile.age
+    brew: age
+  - winget: SecretsOPerationS.SOPS
+    brew: sops
+  - winget: GnuPG.Gpg4win
+    brew: gpg
+  - winget: Kubernetes.kubectl
+    brew: kubectl
+  - winget: Helm.Helm
+    brew: helm
+  - scoop: extras/snipaste
+    cask: snipaste
+  - scoop: nerd-fonts/FiraCode-NF-Mono
+    cask: font-fira-code-nerd-font
+  - winget: GitHub.cli
+    brew: gh
+  - winget: Axosoft.GitKraken
+    cask: gitkraken
+  - winget: Docker.DockerDesktop
+    cask: docker
+  - winget: Microsoft.PowerShell
+  - winget: Microsoft.PowerToys
+  - winget: Neovim.Neovim
+    brew: neovim
+  - winget: Mirantis.Lens
+    cask: lens
+  - winget: Postman.Postman
+    cask: postman
+  - brew: fnm
+    # winget: Schniz.fnm
+
+  # - winget: RedHat.Podman-Desktop
+  #   cask: podman-desktop
+
+  - cask: raycast
+  - cask: alt-tab
+  - cask: hiddenbar
+
+  - winget: JAMSoftware.TreeSize.Free
+  - winget: Google.ChromeRemoteDesktopHost
+  - winget: Google.GoogleDrive
+  - winget: Discord.Discord
+  - winget: Valve.Steam
+  - winget: FACEITLTD.FACEITAC
+  - winget: EpicGames.EpicGamesLauncher
+  - winget: GOG.Galaxy
+  - winget: Valve.SteamLink
+  - winget: PlayStation.PSRemotePlay
+  - winget: SideQuestVR.SideQuest
+  - winget: VirtualDesktop.Streamer
