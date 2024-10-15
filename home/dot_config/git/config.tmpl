@@ -6,4 +6,10 @@
     please = push --force-with-lease
     l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
 
+[push]
+    autoSetupRemote = true
+
+[pull]
+    rebase = true
+
 # credential.helper=/mnt/c/Program\ Files/Git/mingw64/bin/git-credential-manager.exe
