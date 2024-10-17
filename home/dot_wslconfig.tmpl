@@ -1,0 +1,7 @@
+{{ if eq .chezmoi.os "windows" }}
+[wsl2]
+networkingMode=mirrored
+
+[experimental]
+autoMemoryReclaim=gradual
+{{ end }}
