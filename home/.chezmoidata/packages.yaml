@@ -51,7 +51,11 @@ packages:
   - winget: Postman.Postman
     cask: postman
   - brew: fnm
-    # winget: Schniz.fnm
+    winget: Schniz.fnm
+  - brew: bun
+    winget: Oven-sh.Bun
+  - brew: deno
+    winget: DenoLand.Deno
 
   # - winget: RedHat.Podman-Desktop
   #   cask: podman-desktop
