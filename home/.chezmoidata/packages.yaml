@@ -36,16 +36,12 @@ packages:
     cask: snipaste
   - scoop: nerd-fonts/FiraCode-NF-Mono
     cask: font-fira-code-nerd-font
-  - winget: GitHub.cli
-    brew: gh
   - winget: Axosoft.GitKraken
     cask: gitkraken
   - winget: Docker.DockerDesktop
     cask: docker
   - winget: Microsoft.PowerShell
   - winget: Microsoft.PowerToys
-  - winget: Neovim.Neovim
-    brew: neovim
   - winget: Mirantis.Lens
     cask: lens
   - winget: Postman.Postman
