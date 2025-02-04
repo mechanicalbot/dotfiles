@@ -1,0 +1,36 @@
+# -*- mode: shell-script -*-
+
+{{ if eq .chezmoi.os "darwin" }}
+export ZPLUG_HOME=/opt/homebrew/opt/zplug
+{{ else if eq .chezmoi.os "linux" }}
+export ZPLUG_HOME=/home/linuxbrew/.linuxbrew/opt/zplug
+{{ end }}
+source $ZPLUG_HOME/init.zsh
+
+zplug "plugins/fzf", from:oh-my-zsh
+
+zplug "mrjohannchang/zsh-interactive-cd"
+
+zplug "zsh-users/zsh-completions"
+
+zplug "zdharma-continuum/fast-syntax-highlighting"
+
+zplug "zsh-users/zsh-history-substring-search"
+bindkey '^[[A' history-substring-search-up # up
+bindkey '^[[B' history-substring-search-down # down
+HISTORY_SUBSTRING_SEARCH_ENSURE_UNIQUE=1
+
+zplug "zsh-users/zsh-autosuggestions"
+ZSH_AUTOSUGGEST_STRATEGY=(history completion)
+bindkey '  ' autosuggest-accept # space+space accept the current autosuggestion
+
+# zplug "marlonrichert/zsh-autocomplete"
+
+# zplug "plugins/ssh", from:oh-my-zsh
+
+zplug "plugins/history", from:oh-my-zsh
+
+zplug "plugins/starship", from:oh-my-zsh
+
+zplug check || zplug install
+zplug load # --verbose

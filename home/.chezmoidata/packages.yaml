@@ -9,6 +9,8 @@ packages:
     cask: telegram
   - winget: Git.Git
     brew: git
+  - brew: fzf
+  - brew: zplug
   - winget: Starship.Starship
     brew: starship
   - winget: Deezer.Deezer

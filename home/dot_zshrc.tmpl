@@ -1,0 +1,18 @@
+# -*- mode: shell-script -*-
+
+export PATH=$PATH:~/bin
+export PATH=$PATH:~/.local/bin
+
+source ~/.zshrc.config
+my_zsh_history
+my_zsh_bindings
+
+source ~/.zshrc.zplug
+
+{{ if eq .chezmoi.os "darwin" }}
+eval "$(/opt/homebrew/bin/brew shellenv)"
+{{ else if eq .chezmoi.os "linux" }}
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+{{ end }}
+
+eval "$(chezmoi completion zsh)"

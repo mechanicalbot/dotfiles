@@ -1,3 +1,5 @@
+# starship preset gruvbox-rainbow -o ~/.config/starship.toml
+
 "$schema" = 'https://starship.rs/config-schema.json'
 
 format = """
