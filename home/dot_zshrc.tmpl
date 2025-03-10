@@ -7,7 +7,10 @@ source ~/.zshrc.config
 my_zsh_history
 my_zsh_bindings
 
-source ~/.zshrc.zplug
+# source ~/.zshrc.zplug
+
+if [ "$TERM_PROGRAM" != "vscode" ]; then
+fi
 
 {{ if eq .chezmoi.os "darwin" }}
 eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -17,3 +20,4 @@ eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 eval "$(chezmoi completion zsh)"
 eval "$(fnm env --use-on-cd)"
+eval "$(starship init zsh)"

@@ -21,6 +21,8 @@ function my_zsh_bindings {
 
     bindkey "^[[1;5C" forward-word # ctrl + right
     bindkey "^[[1;5D" backward-word # ctrl + left
+    bindkey "^[[1;3C" forward-word # option + right
+    bindkey "^[[1;3D" backward-word # option + left
 
     autoload -Uz select-word-style
     select-word-style bash # respect slash as word delimiter
